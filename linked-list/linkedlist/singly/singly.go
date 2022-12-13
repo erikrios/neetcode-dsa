@@ -82,12 +82,13 @@ func (s *SinglyLinkedList[T]) Find(v T) bool {
 	return isExists
 }
 
-func (s *SinglyLinkedList[T]) Delete() {
+func (s *SinglyLinkedList[T]) Delete() (result T) {
 	if s.head == nil {
 		return
 	}
 
 	if s.tail == s.head {
+		result = s.head.val
 		s.head, s.tail = nil, nil
 		return
 	}
@@ -99,8 +100,10 @@ func (s *SinglyLinkedList[T]) Delete() {
 		cur = cur.next
 	}
 
+	result = s.tail.val
 	s.tail = prev
 	s.tail.next = nil
+	return
 }
 
 func (s *SinglyLinkedList[T]) ToList() []T {

@@ -229,6 +229,6 @@ func TestToList(t *testing.T) {
 func assertValue(t testing.TB, got any, want any) {
 	t.Helper()
 	if !reflect.DeepEqual(got, want) {
-		t.Fatalf("wamt %#v, but got %#v", want, got)
+		t.Fatalf("want %#v, but got %#v", want, got)
 	}
 }

@@ -84,20 +84,23 @@ func (d *DoublyLinkedList[T]) Find(v T) bool {
 	return isExists
 }
 
-func (d *DoublyLinkedList[T]) Delete() {
+func (d *DoublyLinkedList[T]) Delete() (result T) {
 	if d.head == nil {
 		return
 	}
 
 	if d.head == d.tail {
+		result = d.head.val
 		d.head, d.tail = nil, nil
 		return
 	}
 
+	result = d.tail.val
 	oldTail := d.tail
 	d.tail.prev.next = nil
 	d.tail = d.tail.prev
 	oldTail.prev = nil
+	return
 }
 
 func (d *DoublyLinkedList[T]) ToList() []T {
