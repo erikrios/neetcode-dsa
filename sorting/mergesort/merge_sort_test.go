@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestInsertionSort(t *testing.T) {
+func TestMergeSort(t *testing.T) {
 	testCases := []struct {
 		name     string
 		input    []int
