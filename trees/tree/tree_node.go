@@ -6,6 +6,6 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func New(val int) *TreeNode {
-	return &TreeNode{Val: val}
+func New() *TreeNode {
+	return &TreeNode{}
 }

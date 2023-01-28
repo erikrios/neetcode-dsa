@@ -7,18 +7,22 @@ type BinarySearchTree struct {
 }
 
 func New(val int) *BinarySearchTree {
-	return &BinarySearchTree{Root: tree.New(val)}
+	return &BinarySearchTree{Root: tree.New()}
 }
 
-func Search(root *tree.TreeNode, val int) bool {
+func (b *BinarySearchTree) Search(val int) bool {
+	return search(b.Root, val)
+}
+
+func search(root *tree.TreeNode, val int) bool {
 	if root == nil {
 		return false
 	}
 
 	if val < root.Val {
-		return Search(root.Left, val)
+		return search(root.Left, val)
 	} else if val > root.Val {
-		return Search(root.Right, val)
+		return search(root.Right, val)
 	} else {
 		return true
 	}

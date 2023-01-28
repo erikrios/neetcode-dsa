@@ -64,7 +64,7 @@ func TestSearch(t *testing.T) {
 
 	for _, testCase := range testCases {
 		t.Run(testCase.name, func(t *testing.T) {
-			got := Search(testCase.tree.Root, testCase.target)
+			got := testCase.tree.Search(testCase.target)
 			assertValue(t, got, testCase.expected)
 		})
 	}
