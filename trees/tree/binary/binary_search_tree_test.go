@@ -8,7 +8,7 @@ import (
 
 func TestNew(t *testing.T) {
 	t.Run("it should not nill, when binary tree node is initiated", func(t *testing.T) {
-		binaryTree := New(5)
+		binaryTree := New()
 		assertNotNil(t, binaryTree)
 	})
 }
