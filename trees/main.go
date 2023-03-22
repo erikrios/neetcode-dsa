@@ -22,4 +22,7 @@ func main() {
 	fmt.Println("-----")
 	bst.Insert(8)
 	spew.Dump(bst)
+	fmt.Println(bst.Inorder())
+	fmt.Println(bst.Preorder())
+	fmt.Println(bst.Postorder())
 }

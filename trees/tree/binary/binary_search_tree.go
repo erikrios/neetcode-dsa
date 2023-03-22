@@ -1,6 +1,8 @@
 package binary
 
-import "trees/tree"
+import (
+	"trees/tree"
+)
 
 type BinarySearchTree struct {
 	Root *tree.TreeNode
@@ -26,6 +28,18 @@ func (b *BinarySearchTree) Insert(val int) {
 
 func (b *BinarySearchTree) Delete(val int) {
 	delete(b.Root, val)
+}
+
+func (b *BinarySearchTree) Inorder() []int {
+	return inorder(b.Root)
+}
+
+func (b *BinarySearchTree) Preorder() []int {
+	return preorder(b.Root)
+}
+
+func (b *BinarySearchTree) Postorder() []int {
+	return postorder(b.Root)
 }
 
 func minValueNode(root *tree.TreeNode) *tree.TreeNode {
@@ -92,4 +106,52 @@ func delete(root *tree.TreeNode, val int) *tree.TreeNode {
 	}
 
 	return root
+}
+
+func inorder(root *tree.TreeNode) []int {
+	if root == nil {
+		return []int{}
+	}
+
+	results := make([]int, 0)
+
+	leftChilds := inorder(root.Left)
+	results = append(results, leftChilds...)
+	results = append(results, root.Val)
+	rightChilds := inorder(root.Right)
+	results = append(results, rightChilds...)
+
+	return results
+}
+
+func preorder(root *tree.TreeNode) []int {
+	if root == nil {
+		return []int{}
+	}
+
+	results := make([]int, 0)
+
+	results = append(results, root.Val)
+	leftChilds := preorder(root.Left)
+	results = append(results, leftChilds...)
+	rightChilds := preorder(root.Right)
+	results = append(results, rightChilds...)
+
+	return results
+}
+
+func postorder(root *tree.TreeNode) []int {
+	if root == nil {
+		return []int{}
+	}
+
+	results := make([]int, 0)
+
+	leftChilds := postorder(root.Left)
+	results = append(results, leftChilds...)
+	rightChilds := postorder(root.Right)
+	results = append(results, rightChilds...)
+	results = append(results, root.Val)
+
+	return results
 }
