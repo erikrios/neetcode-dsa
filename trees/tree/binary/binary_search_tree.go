@@ -1,6 +1,8 @@
 package binary
 
 import (
+	"fmt"
+	"trees/queue"
 	"trees/tree"
 )
 
@@ -40,6 +42,10 @@ func (b *BinarySearchTree) Preorder() []int {
 
 func (b *BinarySearchTree) Postorder() []int {
 	return postorder(b.Root)
+}
+
+func (b *BinarySearchTree) BreadthFirstSearch() {
+	dfs(b.Root)
 }
 
 func minValueNode(root *tree.TreeNode) *tree.TreeNode {
@@ -154,4 +160,33 @@ func postorder(root *tree.TreeNode) []int {
 	results = append(results, root.Val)
 
 	return results
+}
+
+func dfs(root *tree.TreeNode) {
+	q := queue.New[*tree.TreeNode]()
+
+	if root != nil {
+		q.Enqueue(root)
+	}
+
+	var level int
+	for !q.IsEmpty() {
+		fmt.Println("Level:", level)
+
+		values := q.ToList()
+		for i := 0; i < len(values); i++ {
+			cur, _ := q.Dequeue()
+			fmt.Println(cur.Val)
+
+			if cur.Left != nil {
+				q.Enqueue(cur.Left)
+			}
+
+			if cur.Right != nil {
+				q.Enqueue(cur.Right)
+			}
+		}
+
+		level++
+	}
 }

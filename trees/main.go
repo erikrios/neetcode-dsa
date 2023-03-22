@@ -25,4 +25,5 @@ func main() {
 	fmt.Println(bst.Inorder())
 	fmt.Println(bst.Preorder())
 	fmt.Println(bst.Postorder())
+	bst.BreadthFirstSearch()
 }
